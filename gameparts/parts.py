@@ -16,6 +16,17 @@ class Board:
             print('|'.join(row))
             print('-' * 5)
 
+    def is_board_full(self):
+        return all([self.board[row][col] != ' ' for row in
+                    range(self.field_size) for col in range(self.field_size)])
+
+    def check_win(self, player):
+        for row in range(self.field_size):
+             if (all([self.board[row][col] == player for col
+                     in range(self.field_size)]) or 
+             all([self.board[col][row] == player for col
+                     in range(self.field_size)])): return True
+
     def __str__(self) -> str:
         return (
                 'Объект игрового поля размером '
