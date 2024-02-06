@@ -22,10 +22,17 @@ class Board:
 
     def check_win(self, player):
         for row in range(self.field_size):
-             if (all([self.board[row][col] == player for col
-                     in range(self.field_size)]) or 
-             all([self.board[col][row] == player for col
-                     in range(self.field_size)])): return True
+             if (
+                all([self.board[row][col] == player for col
+                      in range(self.field_size)]) or
+                all([self.board[col][row] == player for col
+                      in range(self.field_size)]) or
+                all([self.board[col][col] == player for col
+                      in range(self.field_size)]) or
+                all([self.board[col][self.field_size - col - 1] == player 
+                     for col in range(self.field_size)])
+                     ): return True
+        return False
 
     def __str__(self) -> str:
         return (

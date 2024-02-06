@@ -47,11 +47,12 @@ def main():
         game.make_move(row, col, current_player)
         game.display()
         if game.check_win(current_player):
-            print(f'Победил игрок {game.current_player}')
+            print(f'Победил игрок {current_player}')
             running = False
         elif game.is_board_full():
             print('Ничья!')
             running = False
+
         current_player = 'O' if current_player == 'X' else 'X'
 
 
